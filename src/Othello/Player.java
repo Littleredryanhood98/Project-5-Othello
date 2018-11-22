@@ -1,12 +1,12 @@
 package Othello;
 
 public class Player {
-	int player;
+	char player;
 	boolean isAi;
 	String name;
 	
-	public Player(int num, boolean Ai, String name) {
-		player = num;
+	public Player(char c, boolean Ai, String name) {
+		player = c;
 		isAi = Ai;
 		this.name = name;
 	}
@@ -16,8 +16,12 @@ public class Player {
 		
 		return true;
 	}
-	
-		
+	public String getName() {
+		return name;
+	}
+	public char piece() {
+		return player;
+	}
 	
 	
 	
