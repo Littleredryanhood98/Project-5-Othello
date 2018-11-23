@@ -12,7 +12,7 @@ public class Player {
 	}
 	
 	public boolean availablemoves() {
-		
+		//I need to see more of board completed.
 		
 		return true;
 	}

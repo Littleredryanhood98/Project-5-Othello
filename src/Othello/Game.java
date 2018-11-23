@@ -84,6 +84,8 @@ public class Game {
 			}
 		}
 
+		//I need a method named "hasWon" in board that counts how many pieces the 
+		//player has in reference to the board total for at the end of the game
 		if(gameBoard.hasWon(currentPlayer) == true) {
 			System.out.println("Congrats player " + currentPlayer + " you have won!!");
 		}else if(gameBoard.isFull() == true) {
