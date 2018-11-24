@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 
 public class Game { 
-	
+	private Player plr1;
+	private Player plr2;
 	private Board gameBoard;
-	private char currentPlayer; 
+	private Player currentPlayer; 
 	private boolean stop;
 	private boolean cont;
 	Scanner in;
@@ -18,12 +19,12 @@ public class Game {
 	 */
 	public Game(String plrname, boolean Aiplr, String otrplrname, boolean Aiotrplr){
 		gameBoard = new Board();
-		Player plr1 = new Player('X',Aiplr,plrname);
-		Player plr2 = new Player('O',Aiotrplr,otrplrname);
+		plr1 = new Player('X',Aiplr,plrname);
+		plr2 = new Player('O',Aiotrplr,otrplrname);
 		stop = false;
 		cont = false;
 		in = new Scanner(System.in);
-
+		currentPlayer = plr1;
 	}
 	
 	void gameLoop() {
@@ -33,13 +34,13 @@ public class Game {
 			int start = 1;
 			
 			if(start == 1) {
-				//idk the board size
+				
 				
 				System.out.println("Enter a location between 1-64.");
 				start++;
 			}
 			
-			System.out.print("Player " + currentPlayer + " please enter your move:");
+			System.out.print("Player " + currentPlayer.getName() + " please enter your move:");
 
 			
 			cont = false;
@@ -53,7 +54,7 @@ public class Game {
 				//tries to execute the game's functions
 				try{
 					
-					gameBoard.play(currentPlayer,in.nextInt());
+					gameBoard.play(currentPlayer.piece(),in.nextInt());
 					cont= true;
 					if(round >1) {
 						gameBoard.printBoard();
@@ -69,25 +70,23 @@ public class Game {
 			}
 			//if (currentPlay)
 
-			if(gameBoard.hasWon(currentPlayer) == true) {
-				stop = true;	
-			}else if(gameBoard.isFull() == true) {
+			if(gameBoard.isFull() == true) {
 				stop = true;
 			}
 
 			if (stop == false) {
-				if (currentPlayer =='X') {
-					currentPlayer = 'O';
+				if (currentPlayer.piece() =='X') {
+					currentPlayer = plr2;
 				}else {
-					currentPlayer = 'X';
+					currentPlayer = plr1;
 				}
 			}
 		}
 
 		//I need a method named "hasWon" in board that counts how many pieces the 
 		//player has in reference to the board total for at the end of the game
-		if(gameBoard.hasWon(currentPlayer) == true) {
-			System.out.println("Congrats player " + currentPlayer + " you have won!!");
+		if(gameBoard.hasWon(currentPlayer.piece()) == true) {
+			System.out.println("Congrats player " + currentPlayer.getName() + " you have won!!");
 		}else if(gameBoard.isFull() == true) {
 			System.out.println("Game is a Tie!");
 		}
