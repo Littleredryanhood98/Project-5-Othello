@@ -227,7 +227,33 @@ public class Board {
     	 }
     	 
     	 
-    	 //TODO all diagonals
+    	 //TODO finish and test diagonals
+    	 //check diagonal up and left
+    	 boolean flipDiagonalUpLeft = false;
+    	 int toRowLeft = r;
+    	 int toColumnUp = c;
+    	 for (int i=r-1; r >=0; r--) {
+    		 for (int j=c-1, k=i; j >= 0; j--, k--) {
+    			 if (board[k][j] == ' ') {
+    				 break;
+    			 }
+    			 else if (board[k][j] == currentPlayer) {
+    				 toRowLeft = k;
+    				 toColumnUp = j;
+    				 flipDiagonalUpLeft = true;
+    				 break;
+    			 }
+    		 }
+    	 }
+    	 
+    	 //flip diagonal up and left if applicable
+    	 if (flipDiagonalUpLeft) {
+    		 for (int i=r-1; r >=toRowLeft; r--) {
+        		 for (int j=c-1, k=i; j >= toColumnUp; j--, k--) {
+        			 board[k][j] = currentPlayer;
+        		 }
+    		 }
+    	 }
      }
      
      
