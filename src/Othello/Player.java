@@ -4,6 +4,7 @@ public class Player {
 	char player;
 	boolean isAi;
 	String name;
+	boolean isTurn;
 	
 	public Player(char c, boolean Ai, String name) {
 		player = c;
@@ -23,7 +24,4 @@ public class Player {
 		return player;
 	}
 	
-	
-	
-//	taylor is the best human being ever!!!!!!! 
 }
