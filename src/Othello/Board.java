@@ -300,7 +300,7 @@ public class Board {
     	 }
     	 
     	 
-    	//check diagonal down and left
+    	//check diagonal down and left.
     	 boolean flipDiagonalDownLeft = false;
     	 toRowLeft = r;
     	 toColumnDown = c;
