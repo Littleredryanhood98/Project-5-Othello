@@ -1,0 +1,985 @@
+package Othello;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+//I am going to have to modify it obviously to fit the other methods and stuff and use them, but the board works
+
+
+public class OthelloGUI implements ActionListener{
+
+	private static final GridLayout layout = new GridLayout(8,8);
+	private static final String spacee = "\t \t";
+	boolean turn = true;
+	
+	private JFrame window = new JFrame("Othello");
+	private JTextArea space = new JTextArea(spacee, 1, 10);
+	
+	private JButton button1 = new JButton();
+	private JButton button2 = new JButton();
+	private JButton button3 = new JButton();
+	private JButton button4 = new JButton();
+	private JButton button5 = new JButton();
+	private JButton button6 = new JButton();
+	private JButton button7 = new JButton();
+	private JButton button8 = new JButton();
+	private JButton button9 = new JButton();
+	private JButton button10 = new JButton();
+	private JButton button11 = new JButton();
+	private JButton button12 = new JButton();
+	private JButton button13 = new JButton();
+	private JButton button14 = new JButton();
+	private JButton button15 = new JButton();
+	private JButton button16 = new JButton();
+	private JButton button17 = new JButton();
+	private JButton button18 = new JButton();
+	private JButton button19 = new JButton();
+	private JButton button20 = new JButton();
+	private JButton button21 = new JButton();
+	private JButton button22 = new JButton();
+	private JButton button23 = new JButton();
+	private JButton button24 = new JButton();
+	private JButton button25 = new JButton();
+	private JButton button26 = new JButton();
+	private JButton button27 = new JButton();
+	private JButton button28 = new JButton();
+	private JButton button29 = new JButton();
+	private JButton button30 = new JButton();
+	private JButton button31 = new JButton();
+	private JButton button32 = new JButton();
+	private JButton button33 = new JButton();
+	private JButton button34 = new JButton();
+	private JButton button35 = new JButton();
+	private JButton button36 = new JButton();
+	private JButton button37 = new JButton();
+	private JButton button38 = new JButton();
+	private JButton button39 = new JButton();
+	private JButton button40 = new JButton();
+	private JButton button41 = new JButton();
+	private JButton button42 = new JButton();
+	private JButton button43 = new JButton();
+	private JButton button44 = new JButton();
+	private JButton button45 = new JButton();
+	private JButton button46 = new JButton();
+	private JButton button47 = new JButton();
+	private JButton button48 = new JButton();
+	private JButton button49 = new JButton();
+	private JButton button50 = new JButton();
+	private JButton button51 = new JButton();
+	private JButton button52 = new JButton();
+	private JButton button53 = new JButton();
+	private JButton button54 = new JButton();
+	private JButton button55 = new JButton();
+	private JButton button56 = new JButton();
+	private JButton button57 = new JButton();
+	private JButton button58 = new JButton();
+	private JButton button59 = new JButton();
+	private JButton button60 = new JButton();
+	private JButton button61 = new JButton();
+	private JButton button62 = new JButton();
+	private JButton button63 = new JButton();
+	private JButton button64 = new JButton();
+	private JButton button65 = new JButton();
+	
+	public OthelloGUI(){
+		window.setSize(500, 500);
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		space.setBackground(window.getBackground());
+		window.setLayout(layout);
+		
+		window.add(button1);
+		window.add(button2);
+		window.add(button3);
+		window.add(button4);
+		window.add(button5);
+		window.add(button6);
+		window.add(button7);
+		window.add(button8);
+		window.add(button9);
+		window.add(button10);
+		window.add(button11);
+		window.add(button12);
+		window.add(button13);
+		window.add(button14);
+		window.add(button15);
+		window.add(button16);
+		window.add(button17);
+		window.add(button18);
+		window.add(button19);
+		window.add(button20);
+		window.add(button21);
+		window.add(button22);
+		window.add(button23);
+		window.add(button24);
+		window.add(button25);
+		window.add(button26);
+		window.add(button27);
+		window.add(button28);
+		window.add(button29);
+		window.add(button30);
+		window.add(button31);
+		window.add(button31);
+		window.add(button33);
+		window.add(button34);
+		window.add(button35);
+		window.add(button36);
+		window.add(button37);
+		window.add(button38);
+		window.add(button39);
+		window.add(button40);
+		window.add(button41);
+		window.add(button42);
+		window.add(button43);
+		window.add(button44);
+		window.add(button45);
+		window.add(button46);
+		window.add(button47);
+		window.add(button48);
+		window.add(button49);
+		window.add(button50);
+		window.add(button51);
+		window.add(button52);
+		window.add(button53);
+		window.add(button54);
+		window.add(button55);
+		window.add(button56);
+		window.add(button57);
+		window.add(button58);
+		window.add(button59);
+		window.add(button60);
+		window.add(button61);
+		window.add(button62);
+		window.add(button63);
+		window.add(button64);
+		window.add(button65);
+		
+		window.setVisible(true);
+
+//top left corner
+		button1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(1);
+			}
+		});
+		button2.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(2);
+			}
+		});
+		button3.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(3);
+			}
+		});
+		button4.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(4);
+			}
+		});
+		button5.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(5);
+			}
+		});
+		button6.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(6);
+			}
+		});
+		button7.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(7);
+			}
+		});
+//top right corner
+		button8.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(8);
+			}
+		});
+		button9.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(9);
+			}
+		});
+		button10.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(10);
+			}
+		});
+		button11.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(11);
+			}
+		});
+		button12.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(12);
+			}
+		});
+		button13.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(13);
+			}
+		});
+		button14.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(14);
+			}
+		});
+		button15.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(15);
+			}
+		});
+		button16.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(16);
+			}
+		});
+		button17.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(17);
+			}
+		});
+		button18.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(18);
+			}
+		});
+		button19.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(19);
+			}
+		});
+		button20.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(20);
+			}
+		});
+		button21.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(21);
+			}
+		});
+		button22.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(22);
+			}
+		});
+		button23.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(23);
+			}
+		});
+		button24.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(24);
+			}
+		});
+		button25.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(25);
+			}
+		});
+		button26.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(26);
+			}
+		});
+		button27.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(27);
+			}
+		});
+		button28.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(28);
+			}
+		});
+		button29.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(29);
+			}
+		});
+		button30.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(30);
+			}
+		});
+		button31.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(31);
+			}
+		});
+		button32.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(32);
+			}
+		});
+		button33.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(33);
+			}
+		});
+		button34.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(34);
+			}
+		});
+		button35.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(35);
+			}
+		});
+		button36.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(36);
+			}
+		});
+		button37.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(37);
+			}
+		});
+		button38.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(38);
+			}
+		});
+		button39.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(39);
+			}
+		});
+		button40.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(40);
+			}
+		});
+		button41.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(41);
+			}
+		});
+		button42.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(42);
+			}
+		});
+		button43.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(43);
+			}
+		});
+		button44.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(44);
+			}
+		});
+		button45.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(45);
+			}
+		});
+		button46.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(46);
+			}
+		});
+		button47.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(47);
+			}
+		});
+		button48.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(48);
+			}
+		});
+		button49.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(49);
+			}
+		});
+		button50.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(50);
+			}
+		});
+		button51.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(51);
+			}
+		});
+		button52.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(52);
+			}
+		});
+		button53.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(53);
+			}
+		});
+		button54.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(54);
+			}
+		});
+		button55.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(55);
+			}
+		});
+		button56.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(56);
+			}
+		});
+		button57.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(57);	
+			}
+		});
+//bottom left corner
+		button58.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(58);
+			}
+		});
+		button59.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(59);
+			}
+		});
+		button60.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(60);
+			}
+		});
+		button61.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(61);
+			}
+		});
+		button62.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(62);	
+			}
+		});
+		button63.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(63);
+			}
+		});
+		button64.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(64);
+			}
+		});
+//bottom right corner
+		button65.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				colorChange(65);
+			}
+		});
+		
+		
+		
+		
+		
+		
+		
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void colorChange(int boxClicked) {
+		
+		if(turn) {
+			switch(boxClicked) {
+			
+			case 1:
+				button1.setBackground(Color.WHITE);
+				break;
+			case 2:
+				button2.setBackground(Color.WHITE);
+				break;
+			case 3:
+				button3.setBackground(Color.WHITE);
+				break;
+			case 4:
+				button4.setBackground(Color.WHITE);
+				break;
+			case 5:
+				button5.setBackground(Color.WHITE);
+				break;
+			case 6:
+				button6.setBackground(Color.WHITE);
+				break;
+			case 7:
+				button7.setBackground(Color.WHITE);
+				break;
+			case 8:
+				button8.setBackground(Color.WHITE);
+				break;
+			case 9:
+				button9.setBackground(Color.WHITE);
+				break;
+			case 10:
+				button10.setBackground(Color.WHITE);
+				break;
+			case 11:
+				button11.setBackground(Color.WHITE);
+				break;
+			case 12:
+				button12.setBackground(Color.WHITE);
+				break;
+			case 13:
+				button13.setBackground(Color.WHITE);
+				break;
+			case 14:
+				button14.setBackground(Color.WHITE);
+				break;
+			case 15:
+				button15.setBackground(Color.WHITE);
+				break;
+			case 16:
+				button16.setBackground(Color.WHITE);
+				break;
+			case 17:
+				button17.setBackground(Color.WHITE);
+				break;
+			case 18:
+				button18.setBackground(Color.WHITE);
+				break;
+			case 19:
+				button19.setBackground(Color.WHITE);
+				break;
+			case 20:
+				button20.setBackground(Color.WHITE);
+				break;
+			case 21:
+				button21.setBackground(Color.WHITE);
+				break;
+			case 22:
+				button22.setBackground(Color.WHITE);
+				break;
+			case 23:
+				button23.setBackground(Color.WHITE);
+				break;
+			case 24:
+				button24.setBackground(Color.WHITE);
+				break;
+			case 25:
+				button25.setBackground(Color.WHITE);
+				break;
+			case 26:
+				button26.setBackground(Color.WHITE);
+				break;
+			case 27:
+				button27.setBackground(Color.WHITE);
+				break;
+			case 28:
+				button28.setBackground(Color.WHITE);
+				break;
+			case 29:
+				button29.setBackground(Color.WHITE);
+				break;
+			case 30:
+				button30.setBackground(Color.WHITE);
+				break;
+			case 31:
+				button31.setBackground(Color.WHITE);
+				break;
+			case 32:
+				button32.setBackground(Color.WHITE);
+				break;
+			case 33:
+				button33.setBackground(Color.WHITE);
+				break;
+			case 34:
+				button34.setBackground(Color.WHITE);
+				break;
+			case 35:
+				button35.setBackground(Color.WHITE);
+				break;
+			case 36:
+				button36.setBackground(Color.WHITE);
+				break;
+			case 37:
+				button37.setBackground(Color.WHITE);
+				break;
+			case 38:
+				button38.setBackground(Color.WHITE);
+				break;
+			case 39:
+				button39.setBackground(Color.WHITE);
+				break;
+			case 40:
+				button40.setBackground(Color.WHITE);
+				break;
+			case 41:
+				button41.setBackground(Color.WHITE);
+				break;
+			case 42:
+				button42.setBackground(Color.WHITE);
+				break;
+			case 43:
+				button43.setBackground(Color.WHITE);
+				break;
+			case 44:
+				button44.setBackground(Color.WHITE);
+				break;
+			case 45:
+				button45.setBackground(Color.WHITE);
+				break;
+			case 46:
+				button46.setBackground(Color.WHITE);
+				break;
+			case 47:
+				button47.setBackground(Color.WHITE);
+				break;
+			case 48:
+				button48.setBackground(Color.WHITE);
+				break;
+			case 49:
+				button49.setBackground(Color.WHITE);
+				break;
+			case 50:
+				button50.setBackground(Color.WHITE);
+				break;
+			case 51:
+				button51.setBackground(Color.WHITE);
+				break;
+			case 52:
+				button52.setBackground(Color.WHITE);
+				break;
+			case 53:
+				button53.setBackground(Color.WHITE);
+				break;
+			case 54:
+				button54.setBackground(Color.WHITE);
+				break;
+			case 55:
+				button55.setBackground(Color.WHITE);
+				break;
+			case 56:
+				button56.setBackground(Color.WHITE);
+				break;
+			case 57:
+				button57.setBackground(Color.WHITE);
+				break;
+			case 58:
+				button58.setBackground(Color.WHITE);
+				break;
+			case 59:
+				button59.setBackground(Color.WHITE);
+				break;
+			case 60:
+				button60.setBackground(Color.WHITE);
+				break;
+			case 61:
+				button61.setBackground(Color.WHITE);
+				break;
+			case 62:
+				button62.setBackground(Color.WHITE);
+				break;
+			case 63:
+				button63.setBackground(Color.WHITE);
+				break;
+			case 64:
+				button64.setBackground(Color.WHITE);
+				break;
+			case 65:
+				button65.setBackground(Color.WHITE);
+				break;
+		}
+		}else {
+			switch(boxClicked) {
+				
+				case 1:
+					button1.setBackground(Color.BLACK);
+					break;
+				case 2:
+					button2.setBackground(Color.BLACK);
+					break;
+				case 3:
+					button3.setBackground(Color.BLACK);
+					break;
+				case 4:
+					button4.setBackground(Color.BLACK);
+					break;
+				case 5:
+					button5.setBackground(Color.BLACK);
+					break;
+				case 6:
+					button6.setBackground(Color.BLACK);
+					break;
+				case 7:
+					button7.setBackground(Color.BLACK);
+					break;
+				case 8:
+					button8.setBackground(Color.BLACK);
+					break;
+				case 9:
+					button9.setBackground(Color.BLACK);
+					break;
+				case 10:
+					button10.setBackground(Color.BLACK);
+					break;
+				case 11:
+					button11.setBackground(Color.BLACK);
+					break;
+				case 12:
+					button12.setBackground(Color.BLACK);
+					break;
+				case 13:
+					button13.setBackground(Color.BLACK);
+					break;
+				case 14:
+					button14.setBackground(Color.BLACK);
+					break;
+				case 15:
+					button15.setBackground(Color.BLACK);
+					break;
+				case 16:
+					button16.setBackground(Color.BLACK);
+					break;
+				case 17:
+					button17.setBackground(Color.BLACK);
+					break;
+				case 18:
+					button18.setBackground(Color.BLACK);
+					break;
+				case 19:
+					button19.setBackground(Color.BLACK);
+					break;
+				case 20:
+					button20.setBackground(Color.BLACK);
+					break;
+				case 21:
+					button21.setBackground(Color.BLACK);
+					break;
+				case 22:
+					button22.setBackground(Color.BLACK);
+					break;
+				case 23:
+					button23.setBackground(Color.BLACK);
+					break;
+				case 24:
+					button24.setBackground(Color.BLACK);
+					break;
+				case 25:
+					button25.setBackground(Color.BLACK);
+					break;
+				case 26:
+					button26.setBackground(Color.BLACK);
+					break;
+				case 27:
+					button27.setBackground(Color.BLACK);
+					break;
+				case 28:
+					button28.setBackground(Color.BLACK);
+					break;
+				case 29:
+					button29.setBackground(Color.BLACK);
+					break;
+				case 30:
+					button30.setBackground(Color.BLACK);
+					break;
+				case 31:
+					button31.setBackground(Color.BLACK);
+					break;
+				case 32:
+					button32.setBackground(Color.BLACK);
+					break;
+				case 33:
+					button33.setBackground(Color.BLACK);
+					break;
+				case 34:
+					button34.setBackground(Color.BLACK);
+					break;
+				case 35:
+					button35.setBackground(Color.BLACK);
+					break;
+				case 36:
+					button36.setBackground(Color.BLACK);
+					break;
+				case 37:
+					button37.setBackground(Color.BLACK);
+					break;
+				case 38:
+					button38.setBackground(Color.BLACK);
+					break;
+				case 39:
+					button39.setBackground(Color.BLACK);
+					break;
+				case 40:
+					button40.setBackground(Color.BLACK);
+					break;
+				case 41:
+					button41.setBackground(Color.BLACK);
+					break;
+				case 42:
+					button42.setBackground(Color.BLACK);
+					break;
+				case 43:
+					button43.setBackground(Color.BLACK);
+					break;
+				case 44:
+					button44.setBackground(Color.BLACK);
+					break;
+				case 45:
+					button45.setBackground(Color.BLACK);
+					break;
+				case 46:
+					button46.setBackground(Color.BLACK);
+					break;
+				case 47:
+					button47.setBackground(Color.BLACK);
+					break;
+				case 48:
+					button48.setBackground(Color.BLACK);
+					break;
+				case 49:
+					button49.setBackground(Color.BLACK);
+					break;
+				case 50:
+					button50.setBackground(Color.BLACK);
+					break;
+				case 51:
+					button51.setBackground(Color.BLACK);
+					break;
+				case 52:
+					button52.setBackground(Color.BLACK);
+					break;
+				case 53:
+					button53.setBackground(Color.BLACK);
+					break;
+				case 54:
+					button54.setBackground(Color.BLACK);
+					break;
+				case 55:
+					button55.setBackground(Color.BLACK);
+					break;
+				case 56:
+					button56.setBackground(Color.BLACK);
+					break;
+				case 57:
+					button57.setBackground(Color.BLACK);
+					break;
+				case 58:
+					button58.setBackground(Color.BLACK);
+					break;
+				case 59:
+					button59.setBackground(Color.BLACK);
+					break;
+				case 60:
+					button60.setBackground(Color.BLACK);
+					break;
+				case 61:
+					button61.setBackground(Color.BLACK);
+					break;
+				case 62:
+					button62.setBackground(Color.BLACK);
+					break;
+				case 63:
+					button63.setBackground(Color.BLACK);
+					break;
+				case 64:
+					button64.setBackground(Color.BLACK);
+					break;
+				case 65:
+					button65.setBackground(Color.BLACK);
+					break;
+			}
+		}
+		turn = !turn;
+		return;
+	}
+	public static void main(String[] args) {
+		OthelloGUI gui = new OthelloGUI();
+	}
+	public void colorChange() {
+		
+		return;
+	}
+	
+
+}
