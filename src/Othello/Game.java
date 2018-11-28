@@ -65,6 +65,7 @@ public class Game {
 					if(ex.getMessage() == "Spot is taken.") {
 						gameBoard.printBoard();
 					}
+					
 
 				}
 			}
@@ -85,12 +86,18 @@ public class Game {
 
 		//I need a method named "hasWon" in board that counts how many pieces the 
 		//player has in reference to the board total for at the end of the game
-		if(gameBoard.hasWon(currentPlayer.piece()) == true) {
-			System.out.println("Congrats player " + currentPlayer.getName() + " you have won!!");
-		}else if(gameBoard.isFull() == true) {
-			System.out.println("Game is a Tie!");
+		if(gameBoard.countPieces(plr1.piece()) > gameBoard.countPieces(plr2.piece())) {
+			
+			System.out.println("Congrats player " + plr1.getName() + " you have won!!");
+			
+		}else if(gameBoard.countPieces(plr1.piece()) < gameBoard.countPieces(plr2.piece())) {
+			
+			System.out.println("Congrats player " + plr2.getName() + " you have won!!");
+			
+		}else if(gameBoard.countPieces(plr1.piece()) == gameBoard.countPieces(plr2.piece())){
+			
+			System.out.println("Congrats players it is a tie!! ");
 		}
-
 
 	}
 	
