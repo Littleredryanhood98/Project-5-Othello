@@ -10,6 +10,11 @@ public class Player {
 		player = c;
 		isAi = Ai;
 		this.name = name;
+		if (c == 'X') {
+			isTurn = true;
+		} else if(c == 'O'){
+			isTurn = false;
+		}
 	}
 	
 	public boolean availablemoves() {
@@ -23,5 +28,10 @@ public class Player {
 	public char piece() {
 		return player;
 	}
-	
+	public void Setturn(boolean is) {
+		isTurn = is;
+	}
+	public boolean Getturn() {
+		return isTurn;
+	}
 }
