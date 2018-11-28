@@ -4,11 +4,17 @@ public class Player {
 	char player;
 	boolean isAi;
 	String name;
+	boolean isTurn;
 	
 	public Player(char c, boolean Ai, String name) {
 		player = c;
 		isAi = Ai;
 		this.name = name;
+		if (c == 'X') {
+			isTurn = true;
+		} else if(c == 'O'){
+			isTurn = false;
+		}
 	}
 	
 	public boolean availablemoves() {
@@ -22,8 +28,10 @@ public class Player {
 	public char piece() {
 		return player;
 	}
-	
-	
-	
-//	taylor is the best human being ever!!!!!!! 
+	public void Setturn(boolean is) {
+		isTurn = is;
+	}
+	public boolean Getturn() {
+		return isTurn;
+	}
 }

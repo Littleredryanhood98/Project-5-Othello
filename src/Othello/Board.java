@@ -110,42 +110,41 @@ public class Board {
       * @param location - the space they made the move in 
       */
      public Object validPlay(char currentPlayer) {
+    	 ArrayList<Integer> validMoves = new ArrayList<>();
+    	 
+    	 for(int location = 0; location <= 64; location++) {
+    		 int R = getRow(location);
+        	 int C = getColumn(location);
+        	 
+        	 if((board[R-1][C-1] == currentPlayer || board[R-1][C-1] == ' ') && (board[R-1][C] == currentPlayer || board[R-1][C] == ' ') 
+        			 && (board[R-1][C+1] == currentPlayer || board[R-1][C+1] == ' ') && (board[R][C-1] == currentPlayer || board[R][C-1] == ' ') 
+        			 && (board[R][C+1] == currentPlayer || board[R][C+1] == ' ') && (board[R+1][C-1] == currentPlayer || board[R+1][C-1] == ' ') 
+        			 && (board[R+1][C] == currentPlayer || board[R+1][C] == ' ') && (board[R+1][C-1] == currentPlayer || board[R+1][C-1] == ' ')) {
+        		 break;
+        	 }
+        	 
+        	 //Checks row to the left
+        	 for(int i=C-1; i >= 0; i--) {
+        		 if (board[R][i] == ' ') {
+        			 break;
+        		 }
+        		 else if (board[R][i] == currentPlayer) {
+        			 validMoves.add(location);
+        			 break;
+        		 }
+        	 }
+        	 
+        	 
+        		 
+        	
+    		 
+    	 
      }
-     public boolean validPlay(char currentPlayer, int location) {
-    	 int r = getRow(location);
-    	 int c = getColumn(location);
-    	 
-    	 //check to make sure that the spot is empty
-    	 if (board[r][c] != ' ') {
-    		return false;
-    	 }
-    	 
-    	 //check to make sure that it is next to at least one other piece
-    	 if (board[r-1][c-1] == ' ' &&
-    			 board[r-1][c] == ' ' &&
-    			 board[r-1][c+1] == ' ' &&
-    			 board[r][c-1] == ' ' &&
-    			 board[r][c+1] == ' ' &&
-    			 board[r+1][c-1] == ' ' &&
-    			 board[r+1][c] == ' ' &&
-    			 board[r+1][c+1] == ' ') {
-    		 return false;
-    	 }
-    	 
-    	 //check to see that it flips at least one piece
-    	 
-    	 //check row to the left
-    	 for(int i=c-1; i >= 0; i--) {
-    		 if (board[r][i] == ' ') {
-    			 break;
-    		 }
-    		 else if (board[r][i] == currentPlayer) {
-    			 toLeftColumn = i;
-    			 flipLeftRow = true;
-    			 break;
-    		 }
-    	 }
-     }
+    	 return validMoves;
+}
+     
+     
+    
      
      
      /**
