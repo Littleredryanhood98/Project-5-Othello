@@ -1,5 +1,7 @@
 package Othello;
 
+import java.util.ArrayList;
+
 public class Board {
 	
 	
@@ -102,20 +104,27 @@ public class Board {
     
      }
      
+     
+     
+     
+     public int checkUL(int location) {
+    	 int R = getRow(location);
+    	 int C = getColumn(location);
+    	 
+    	 
+    	 
+     }
+     
+     
+     
      /**
       * checks if a player move is valid
       * @param currentPlayer - the player that made the move
       * @param location - the space they made the move in 
       * 
       */
-     public boolean validPlay(char currentPlayer, int location) {
-    	 boolean isValid = true;
-    	 
-    	 if (board[getRow(location)][getColumn(location)] == ' ']) {
-    		isValid = true;
-    	 }
-    	 
-    	 
+     public Object validPlay(char currentPlayer) {
+    	
      }
      
      
