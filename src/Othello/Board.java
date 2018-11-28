@@ -123,7 +123,6 @@ public class Board {
             	 }
              }
     	 }
-    	 
     	 return holder;
      }
      
@@ -185,7 +184,7 @@ public class Board {
     	 //check column above
     	 boolean flipColumnAbove = false;
     	 int toRowAbove = r;
-    	 for (int i=r-1; r > 0; r--) {
+    	 for (int i=r-1; i > 0; i--) {
     		 if (board[i][c] == ' ') {
     			 break;
     		 }
@@ -198,7 +197,7 @@ public class Board {
     	 
     	 //flip column above if applicable
     	 if (flipColumnAbove) {
-    		 for (int i=r-1; r >= toRowAbove; r--) {
+    		 for (int i=r-1; i >= toRowAbove; i--) {
     			 board[i][c] = currentPlayer;
     		 }
     	 }
@@ -208,7 +207,7 @@ public class Board {
     	//check column below
     	 boolean flipColumnBelow = false;
     	 int toRowBelow = r;
-    	 for (int i=r+1; r > 10; r++) {
+    	 for (int i=r+1; i > 10; i++) {
     		 if (board[i][c] == ' ') {
     			 break;
     		 }
@@ -221,50 +220,107 @@ public class Board {
     	 
     	 //flip column below if applicable
     	 if (flipColumnBelow) {
-    		 for (int i=r+1; r <= toRowBelow; r++) {
+    		 for (int i=r+1; i <= toRowBelow; i++) {
     			 board[i][c] = currentPlayer;
     		 }
     	 }
     	 
     	 
-    	 //TODO finish and test diagonals
     	 //check diagonal up and left
     	 boolean flipDiagonalUpLeft = false;
     	 int toRowLeft = r;
     	 int toColumnUp = c;
-    	 for (int i=r-1; r >=0; r--) {
-    		 for (int j=c-1, k=i; j >= 0; j--, k--) {
-    			 if (board[k][j] == ' ') {
-    				 break;
-    			 }
-    			 else if (board[k][j] == currentPlayer) {
-    				 toRowLeft = k;
-    				 toColumnUp = j;
-    				 flipDiagonalUpLeft = true;
-    				 break;
-    			 }
-    		 }
+    	 for (int i=r-1, k=c-1; i >=0 && k>=0; i--, k--) {
+    		if (board[i][k] == ' ') {
+    			break;
+    		}
+    		else if (board[i][k] == currentPlayer) {
+    			toRowLeft = i;
+    			toColumnUp = k;
+    			flipDiagonalUpLeft = true;
+    			break;
+    		}
     	 }
     	 
     	 //flip diagonal up and left if applicable
     	 if (flipDiagonalUpLeft) {
-    		 for (int i=r-1; r >=toRowLeft; r--) {
-        		 for (int j=c-1, k=i; j >= toColumnUp; j--, k--) {
-        			 board[k][j] = currentPlayer;
-        		 }
+    		 for (int i=r-1, k=c-1; i >=0 && k>=0; i--, k--) {
+        		board[i][k] = currentPlayer;
     		 }
     	 }
-     }
-     
-     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    	 
+    	 
+    	 
+    	//check diagonal up and right
+    	 boolean flipDiagonalUpRight = false;
+    	 int toRowRight = r;
+    	 toColumnUp = c;
+    	 for (int i=r-1, k=c+1; i >=0 && k<10; i--, k++) {
+    		if (board[i][k] == ' ') {
+    			break;
+    		}
+    		else if (board[i][k] == currentPlayer) {
+    			toRowRight = i;
+    			toColumnUp = k;
+    			flipDiagonalUpRight = true;
+    			break;
+    		}
+    	 }
+    	 
+    	 //flip diagonal up and right if applicable
+    	 if (flipDiagonalUpRight) {
+    		 for (int i=r-1, k=c+1; i >=0 && k<10; i--, k++) {
+        		board[i][k] = currentPlayer;
+    		 }
+    	 }
+    	 
+    	 
+    	 
+    	//check diagonal down and right
+    	 boolean flipDiagonalDownRight = false;
+    	 toRowRight = r;
+    	 int toColumnDown = c;
+    	 for (int i=r+1, k=c+1; i<10 && k<10; i++, k++) {
+    		if (board[i][k] == ' ') {
+    			break;
+    		}
+    		else if (board[i][k] == currentPlayer) {
+    			toRowRight = i;
+    			toColumnDown = k;
+    			flipDiagonalDownRight = true;
+    			break;
+    		}
+    	 }
+    	 
+    	 //flip diagonal down and right if applicable
+    	 if (flipDiagonalDownRight) {
+    		 for (int i=r+1, k=c+1; i<10 && k<10; i++, k++) {
+        		board[i][k] = currentPlayer;
+    		 }
+    	 }
+    	 
+    	 
+    	//check diagonal down and left
+    	 boolean flipDiagonalDownLeft = false;
+    	 toRowLeft = r;
+    	 toColumnDown = c;
+    	 for (int i=r+1, k=c-1; i<10 && k>=0; i++, k--) {
+    		if (board[i][k] == ' ') {
+    			break;
+    		}
+    		else if (board[i][k] == currentPlayer) {
+    			toRowLeft = i;
+    			toColumnDown = k;
+    			flipDiagonalDownLeft = true;
+    			break;
+    		}
+    	 }
+    	 
+    	 //flip diagonal down and left if applicable
+    	 if (flipDiagonalDownLeft) {
+    		 for (int i=r+1, k=c-1; i<10 && k>=0; i++, k--) {
+        		board[i][k] = currentPlayer;
+    		 }
+    	 }
+     }    
 }
