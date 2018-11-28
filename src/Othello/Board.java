@@ -98,13 +98,39 @@ public class Board {
       * @param location - the space they made the move in 
       */
      public boolean validPlay(char currentPlayer, int location) {
-    	 boolean isValid = true;
+    	 int r = getRow(location);
+    	 int c = getColumn(location);
     	 
-    	 if (board[getRow(location)][getColumn(location)] == ' ') {
-    		isValid = true;
+    	 //check to make sure that the spot is empty
+    	 if (board[r][c] != ' ') {
+    		return false;
     	 }
     	 
+    	 //check to make sure that it is next to at least one other piece
+    	 if (board[r-1][c-1] == ' ' &&
+    			 board[r-1][c] == ' ' &&
+    			 board[r-1][c+1] == ' ' &&
+    			 board[r][c-1] == ' ' &&
+    			 board[r][c+1] == ' ' &&
+    			 board[r+1][c-1] == ' ' &&
+    			 board[r+1][c] == ' ' &&
+    			 board[r+1][c+1] == ' ') {
+    		 return false;
+    	 }
     	 
+    	 //check to see that it flips at least one piece
+    	 
+    	 //check row to the left
+    	 for(int i=c-1; i >= 0; i--) {
+    		 if (board[r][i] == ' ') {
+    			 break;
+    		 }
+    		 else if (board[r][i] == currentPlayer) {
+    			 toLeftColumn = i;
+    			 flipLeftRow = true;
+    			 break;
+    		 }
+    	 }
      }
      
      
