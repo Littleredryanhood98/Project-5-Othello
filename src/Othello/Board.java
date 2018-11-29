@@ -98,14 +98,28 @@ public class Board {
         
    
      /**
-      * checks if a player move is valid
+      * Fills an ArrayList with all possible moves
       * @param currentPlayer - the player that made the move
-      * @param location - the space they made the move in 
       */
      public Object validMoves(char currentPlayer) {
+    	 
     	 ArrayList<Integer> validMoves = new ArrayList<>();
     	 
-    	 for(int location = 0; location <= 64; location++) {
+    	 // Constructs an array of locations in our 8x8 board
+    	 ArrayList<Integer> boardLocations = new ArrayList<>();
+ 		for(int i = 1, k = 1; i <= 89 && k <=100; i++, k++) {
+ 			if(k==1)
+ 				continue;
+ 			else if(k==10) {
+ 				k=0;
+ 				continue;
+ 			}
+ 				
+ 			else 
+ 				boardLocations.add(i);
+ 		}
+    	 
+    	 for(int location : boardLocations) {
     		 int R = getRow(location);
         	 int C = getColumn(location);
         	 
@@ -113,18 +127,18 @@ public class Board {
         			 && (board[R-1][C+1] == currentPlayer || board[R-1][C+1] == ' ') && (board[R][C-1] == currentPlayer || board[R][C-1] == ' ') 
         			 && (board[R][C+1] == currentPlayer || board[R][C+1] == ' ') && (board[R+1][C-1] == currentPlayer || board[R+1][C-1] == ' ') 
         			 && (board[R+1][C] == currentPlayer || board[R+1][C] == ' ') && (board[R+1][C-1] == currentPlayer || board[R+1][C-1] == ' ')) {
-        		 break;
+        		 continue;
         	 }
         	 
         	//Checks row to the left
         	 if(board[R][C-1] != currentPlayer && board[R][C-1] != ' ') {
         		 for(int i=C-1; i >= 1; i--) {
         			 if (board[R][i] == ' ') {
-        				 break;
+        				 continue;
         			 }
         			 else if (board[R][i] == currentPlayer) {
         				 validMoves.add(location);
-        				 break;
+        				 continue;
         			 }
         		 }
         	 }
@@ -133,11 +147,11 @@ public class Board {
         	 if(board[R][C+1] != currentPlayer && board[R][C+1] != ' ') {
         		 for(int i=C+1; i <= 9; i++) {
         			 if (board[R][i] == ' ') {
-        				 break;
+        				 continue;
         			 }
         			 else if (board[R][i] == currentPlayer) {
         				 validMoves.add(location);
-        				 break;
+        				 continue;
         			 }
         		 }
         	 }
@@ -146,11 +160,11 @@ public class Board {
         	 if(board[R-1][C] != currentPlayer && board[R-1][C] != ' ') {
         		 for(int i=R-1; i >= 1; i--) {
         			 if (board[i][C] == ' ') {
-        				 break;
+        				 continue;
         			 }
         			 else if (board[i][C] == currentPlayer) {
         				 validMoves.add(location);
-        				 break;
+        				 continue;
         			 }
         		 }
         	 }
@@ -159,11 +173,11 @@ public class Board {
         	 if(board[R+1][C] != currentPlayer && board[R+1][C] != ' ') {
         		 for(int i=R+1; i <= 9; i++) {
         			 if (board[i][C] == ' ') {
-        				 break;
+        				 continue;
         			 }
         			 else if (board[i][C] == currentPlayer) {
         				 validMoves.add(location);
-        				 break;
+        				 continue;
         			 }
         		 }
         	 }
@@ -172,11 +186,11 @@ public class Board {
         	 if(board[R-1][C-1] != currentPlayer && board[R-1][C-1] != ' ') {
 	        	 for (int i=R-1, k=C-1; i >= 1 && k >= 1; i--, k--) {
 	        		if (board[i][k] == ' ') {
-	        			break;
+	        			continue;
 	        		}
 	        		else if (board[i][k] == currentPlayer) {
 	        			validMoves.add(location);
-	        			break;
+	        			continue;
 	        		}
 	        	 }
         	 }
@@ -185,11 +199,11 @@ public class Board {
         	 if(board[R-1][C+1] != currentPlayer && board[R-1][C+1] != ' ') {
 	        	 for (int i=R-1, k=C+1; i >= 1 && k <= 9; i--, k++) {
 	        		if (board[i][k] == ' ') {
-	        			break;
+	        			continue;
 	        		}
 	        		else if (board[i][k] == currentPlayer) {
 	        			validMoves.add(location);
-	        			break;
+	        			continue;
 	        		}
 	        	 }
         	 }
@@ -198,11 +212,11 @@ public class Board {
         	 if(board[R+1][C-1] != currentPlayer && board[R+1][C-1] != ' ') {
 	        	 for (int i=R+1, k=C-1; i <= 9 && k >= 1; i++, k--) {
 	        		if (board[i][k] == ' ') {
-	        			break;
+	        			continue;
 	        		}
 	        		else if (board[i][k] == currentPlayer) {
 	        			validMoves.add(location);
-	        			break;
+	        			continue;
 	        		}
 	        	 }
         	 }
@@ -211,21 +225,17 @@ public class Board {
         	 if(board[R+1][C+1] != currentPlayer && board[R+1][C+1] != ' ') {
 	        	 for (int i=R+1, k=C+1; i <= 9 && k <= 9; i++, k++) {
 	        		if (board[i][k] == ' ') {
-	        			break;
+	        			continue;
 	        		}
 	        		else if (board[i][k] == currentPlayer) {
 	        			validMoves.add(location);
-	        			break;
+	        			continue;
 	        		}
 	        	 }
         	 }
-        		 
-        	
-    		 
-    	 
-     }
+    	 }
     	 return validMoves;
-}
+     }
      
      
     
