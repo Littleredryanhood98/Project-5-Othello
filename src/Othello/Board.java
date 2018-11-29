@@ -91,8 +91,18 @@ public class Board {
     	 board[getRow(location)][getColumn(location)] = currentPlayer;
      }
      
-     public void play(char currentPlayer, int location) {
-    	 
+     /**
+ 	 * Add move to the board, places a piece where the player chooses
+ 	 * and flips tiles adjacent to the piece played
+     * @param currentPlayer - the player who made the move
+     * @param location - the location that the player just placed a piece
+ 	 * @throws Exception if location is invalid.
+ 	 */
+     public void play(char currentPlayer, int location)throws Exception {
+ 		
+    	 if (validPlay( currentPlayer, location) == false ) {
+    		 throw new Exception("Invalid move.");
+    	 }
     	 placePiece(currentPlayer, location);
     	 flip(currentPlayer, location);
     	 
