@@ -153,7 +153,7 @@ public class Board {
         				 validMoves.add(location);
         				 continue;
         			 }
-        		 }
+        		 } 
         	 }
         	 
         	//Checks column up
