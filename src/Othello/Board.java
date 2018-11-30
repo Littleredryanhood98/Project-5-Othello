@@ -1,7 +1,5 @@
 package Othello;
 
-import java.util.ArrayList;
-
 public class Board {
 	
 	public static char[][] board = new char[10][10];
@@ -92,11 +90,7 @@ public class Board {
      public void placePiece(char currentPlayer, int location) {
     	 board[getRow(location)][getColumn(location)] = currentPlayer;
      }
-
      
-     
-        
-   
      /**
       * Fills an ArrayList with all possible moves
       * @param currentPlayer - the player that made the move
@@ -233,12 +227,41 @@ public class Board {
 	        		}
 	        	 }
         	 }
+
+ 	 * Add move to the board, places a piece where the player chooses
+ 	 * and flips tiles adjacent to the piece played
+     * @param currentPlayer - the player who made the move
+     * @param location - the location that the player just placed a piece
+ 	 * @throws Exception if location is invalid.
+ 	 */
+     public void play(char currentPlayer, int location)throws Exception {
+ 		
+    	 if (validPlay( currentPlayer, location) == false ) {
+    		 throw new Exception("Invalid move.");
     	 }
-    	 return validMoves;
+    	 placePiece(currentPlayer, location);
+    	 flip(currentPlayer, location);
+    	 
+    	 
+    	 
      }
      
-      
-    
+
+     /**
+      * checks if a player move is valid
+      * @param currentPlayer - the player that made the move
+      * @param location - the space they made the move in 
+      */     
+     public boolean validPlay(char currentPlayer, int location) {
+    	 boolean isValid = true;
+    	 
+    	 if (board[getRow(location)][getColumn(location)] == ' ') {
+    		isValid = true;
+    	 }
+    	 
+    	 
+     }
+
      
      
      /**
@@ -256,6 +279,7 @@ public class Board {
             	 }
              }
     	 }
+    	 
     	 return holder;
      }
      
@@ -317,7 +341,7 @@ public class Board {
     	 //check column above
     	 boolean flipColumnAbove = false;
     	 int toRowAbove = r;
-    	 for (int i=r-1; i > 0; i--) {
+    	 for (int i=r-1; r > 0; r--) {
     		 if (board[i][c] == ' ') {
     			 break;
     		 }
@@ -330,7 +354,7 @@ public class Board {
     	 
     	 //flip column above if applicable
     	 if (flipColumnAbove) {
-    		 for (int i=r-1; i >= toRowAbove; i--) {
+    		 for (int i=r-1; r >= toRowAbove; r--) {
     			 board[i][c] = currentPlayer;
     		 }
     	 }
@@ -340,7 +364,7 @@ public class Board {
     	//check column below
     	 boolean flipColumnBelow = false;
     	 int toRowBelow = r;
-    	 for (int i=r+1; i > 10; i++) {
+    	 for (int i=r+1; r > 10; r++) {
     		 if (board[i][c] == ' ') {
     			 break;
     		 }
@@ -353,107 +377,50 @@ public class Board {
     	 
     	 //flip column below if applicable
     	 if (flipColumnBelow) {
-    		 for (int i=r+1; i <= toRowBelow; i++) {
+    		 for (int i=r+1; r <= toRowBelow; r++) {
     			 board[i][c] = currentPlayer;
     		 }
     	 }
     	 
     	 
+    	 //TODO finish and test diagonals
     	 //check diagonal up and left
     	 boolean flipDiagonalUpLeft = false;
     	 int toRowLeft = r;
     	 int toColumnUp = c;
-    	 for (int i=r-1, k=c-1; i >=0 && k>=0; i--, k--) {
-    		if (board[i][k] == ' ') {
-    			break;
-    		}
-    		else if (board[i][k] == currentPlayer) {
-    			toRowLeft = i;
-    			toColumnUp = k;
-    			flipDiagonalUpLeft = true;
-    			break;
-    		}
+    	 for (int i=r-1; r >=0; r--) {
+    		 for (int j=c-1, k=i; j >= 0; j--, k--) {
+    			 if (board[k][j] == ' ') {
+    				 break;
+    			 }
+    			 else if (board[k][j] == currentPlayer) {
+    				 toRowLeft = k;
+    				 toColumnUp = j;
+    				 flipDiagonalUpLeft = true;
+    				 break;
+    			 }
+    		 }
     	 }
     	 
     	 //flip diagonal up and left if applicable
     	 if (flipDiagonalUpLeft) {
-    		 for (int i=r-1, k=c-1; i >=0 && k>=0; i--, k--) {
-        		board[i][k] = currentPlayer;
+    		 for (int i=r-1; r >=toRowLeft; r--) {
+        		 for (int j=c-1, k=i; j >= toColumnUp; j--, k--) {
+        			 board[k][j] = currentPlayer;
+        		 }
     		 }
     	 }
-    	 
-    	 
-    	 
-    	//check diagonal up and right
-    	 boolean flipDiagonalUpRight = false;
-    	 int toRowRight = r;
-    	 toColumnUp = c;
-    	 for (int i=r-1, k=c+1; i >=0 && k<10; i--, k++) {
-    		if (board[i][k] == ' ') {
-    			break;
-    		}
-    		else if (board[i][k] == currentPlayer) {
-    			toRowRight = i;
-    			toColumnUp = k;
-    			flipDiagonalUpRight = true;
-    			break;
-    		}
-    	 }
-    	 
-    	 //flip diagonal up and right if applicable
-    	 if (flipDiagonalUpRight) {
-    		 for (int i=r-1, k=c+1; i >=0 && k<10; i--, k++) {
-        		board[i][k] = currentPlayer;
-    		 }
-    	 }
-    	 
-    	 
-    	 
-    	//check diagonal down and right
-    	 boolean flipDiagonalDownRight = false;
-    	 toRowRight = r;
-    	 int toColumnDown = c;
-    	 for (int i=r+1, k=c+1; i<10 && k<10; i++, k++) {
-    		if (board[i][k] == ' ') {
-    			break;
-    		}
-    		else if (board[i][k] == currentPlayer) {
-    			toRowRight = i;
-    			toColumnDown = k;
-    			flipDiagonalDownRight = true;
-    			break;
-    		}
-    	 }
-    	 
-    	 //flip diagonal down and right if applicable
-    	 if (flipDiagonalDownRight) {
-    		 for (int i=r+1, k=c+1; i<10 && k<10; i++, k++) {
-        		board[i][k] = currentPlayer;
-    		 }
-    	 }
-    	 
-    	 
-    	//check diagonal down and left.
-    	 boolean flipDiagonalDownLeft = false;
-    	 toRowLeft = r;
-    	 toColumnDown = c;
-    	 for (int i=r+1, k=c-1; i<10 && k>=0; i++, k--) {
-    		if (board[i][k] == ' ') {
-    			break;
-    		}
-    		else if (board[i][k] == currentPlayer) {
-    			toRowLeft = i;
-    			toColumnDown = k;
-    			flipDiagonalDownLeft = true;
-    			break;
-    		}
-    	 }
-    	 
-    	 //flip diagonal down and left if applicable
-    	 if (flipDiagonalDownLeft) {
-    		 for (int i=r+1, k=c-1; i<10 && k>=0; i++, k--) {
-        		board[i][k] = currentPlayer;
-    		 }
-    	 }
-     }    
+     }
+     
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
