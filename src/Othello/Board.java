@@ -1,5 +1,7 @@
 package Othello;
 
+import java.util.ArrayList;
+
 public class Board {
 	
 	public static char[][] board = new char[10][10];
@@ -95,7 +97,7 @@ public class Board {
       * Fills an ArrayList with all possible moves
       * @param currentPlayer - the player that made the move
       */
-     public Object validMoves(char currentPlayer) {
+     public ArrayList validMoves(char currentPlayer) {
     	 
     	 ArrayList<Integer> validMoves = new ArrayList<>();
     	 
@@ -227,7 +229,10 @@ public class Board {
 	        		}
 	        	 }
         	 }
-
+    	 }
+    	 return validMoves;
+     }
+     /**
  	 * Add move to the board, places a piece where the player chooses
  	 * and flips tiles adjacent to the piece played
      * @param currentPlayer - the player who made the move
@@ -253,13 +258,14 @@ public class Board {
       * @param location - the space they made the move in 
       */     
      public boolean validPlay(char currentPlayer, int location) {
-    	 boolean isValid = true;
-    	 
-    	 if (board[getRow(location)][getColumn(location)] == ' ') {
+    	 boolean isValid = false;
+    	 ArrayList<Integer> moves = new ArrayList<>(validMoves(currentPlayer));
+    	 for(int i = 0; i < moves.size(); i++) {
+    	 if (location == moves.get(i) ) {
     		isValid = true;
     	 }
-    	 
-    	 
+    	 }
+    	 return isValid;
      }
 
      
