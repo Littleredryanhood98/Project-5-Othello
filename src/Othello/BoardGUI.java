@@ -3,18 +3,23 @@ package Othello;
 //this comment is to be able to push again 
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.AbstractButton;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 public class BoardGUI extends Board implements ActionListener {
+	
 	private static final GridLayout layout = new GridLayout(8,8);
 	private static final String spacee = "\t \t";
 	private static int choice = 0;
@@ -627,14 +632,14 @@ public class BoardGUI extends Board implements ActionListener {
 		if(type == 'O') {
 			for(int i = 1; i <= 64; i++) {
 				if(place == i) {
-					buttonList.get(i-1).setBackground(Color.WHITE);;
+					buttonList.get(i-1).setBackground(Color.WHITE);
 						}
 					}
 				}
 		if(type == 'X') {
 			for(int i = 1; i <= 64; i++) {
 				if(place == i) {
-					buttonList.get(i-1).setBackground(Color.BLACK);;
+					buttonList.get(i-1).setBackground(Color.BLACK);
 						}
 					}
 				}
@@ -647,6 +652,39 @@ public class BoardGUI extends Board implements ActionListener {
 			System.out.print("");
 		}
 		return choice;
+	}
+	@Override
+	public void printBoard() {
+		int place = 1;
+		for (int i = 1; i < 9; i++) {
+            for (int j = 1; j < 9; j++) {
+            	playerMove(place, board[i][j]);
+            	place++;
+           } 
+		}
+	}
+	public void gameEnd(Player p1, Player p2) {
+		
+		JFrame closeWindow = new JFrame("Game Over!");
+		closeWindow.setSize(300,300);
+		window.setVisible(false);
+		closeWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		FlowLayout newLayout = new FlowLayout(FlowLayout.CENTER);
+		closeWindow.setLayout(newLayout);
+
+		JTextPane done = new JTextPane();
+		done.setEditable(false);
+		
+		//JButton playAgain = new JButton("Play Again?");
+		
+		done.setText("Game Over!" + "\n \n" + p1.getName() + " won with " + countPieces(p1.piece()) + "!" 
+		+ "\n \n" + p2.getName() + " lost with only " + countPieces(p2.piece()) + ".");
+		
+		closeWindow.add(done);
+		//closeWindow.add(playAgain);
+		
+		closeWindow.setVisible(true);
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
