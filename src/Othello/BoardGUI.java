@@ -87,8 +87,9 @@ public class BoardGUI extends Board implements ActionListener {
 	private static JButton button62 = new JButton();
 	private static JButton button63 = new JButton();
 	private static JButton button64 = new JButton();
+	private static JButton button65 = new JButton();
 	
-	private ArrayList<JButton> buttonList = new ArrayList<JButton>();
+	private static ArrayList<JButton> buttonList = new ArrayList<JButton>();
 	
 	public BoardGUI(){
 		
@@ -612,7 +613,7 @@ public class BoardGUI extends Board implements ActionListener {
 				button63.setEnabled(false);
 			}
 		});
-//bottom right corner
+		//bottom right corner
 		button64.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -620,19 +621,18 @@ public class BoardGUI extends Board implements ActionListener {
 				button64.setEnabled(false);
 			}
 		});
-
 		
 		}
 	public void playerMove(int place, char type) {
 		if(type == 'O') {
-			for(int i = 1; i < 65; i++) {
+			for(int i = 1; i <= 64; i++) {
 				if(place == i) {
 					buttonList.get(i-1).setBackground(Color.WHITE);;
 						}
 					}
 				}
 		if(type == 'X') {
-			for(int i = 1; i < 65; i++) {
+			for(int i = 1; i <= 64; i++) {
 				if(place == i) {
 					buttonList.get(i-1).setBackground(Color.BLACK);;
 						}
@@ -642,6 +642,10 @@ public class BoardGUI extends Board implements ActionListener {
 		return;
 	}
 	public static int getInput() {
+		choice = 0;
+		while(choice == 0) {
+			System.out.print("");
+		}
 		return choice;
 	}
 	@Override
